@@ -23,6 +23,17 @@ public class Ising extends Canvas implements Runnable {
     new Ising();
   }
   @Override
+  public void paint(Graphics g) {
+    for (int i=0; i<20; i++) {
+      for (int j=0; j<20; j++) {
+        Color color = Color.blue;
+        if ((i + j) % 2==0) color = Color.yellow;
+        g.setColor(color);
+        g.fill3DRect(20 * i, 20 * j, 20, 20, false);
+      }
+    }
+  }
+  @Override
   public void run() {
 
   }
