@@ -7,6 +7,7 @@ public class Ising extends Canvas implements Runnable {
   int canvasSize = 400;
   int atomSize = canvasSize / latticeSize;
   int[][] atomStates = new int[latticeSize][latticeSize];
+  int count = 0;
   Ising() {
     setSize(canvasSize, canvasSize);
     setBackground(Color.WHITE);
@@ -28,6 +29,8 @@ public class Ising extends Canvas implements Runnable {
           else atomStates[row][col] = -1;
       }
     }
+    Thread simulationThread = new Thread(this);
+    simulationThread.start();
   }
   public static void main(String[] args) {
     new Ising();
@@ -48,8 +51,16 @@ public class Ising extends Canvas implements Runnable {
   public void update(Graphics g) {
     paint(g);
   }
+  public void simulationStep() {
+    System.out.println(count);
+    count++;
+  }
   @Override
   public void run() {
-
+    while (true) {
+      for (int n=0; n<100; n++) {
+        simulationStep();
+      }
+    }
   }
 }
