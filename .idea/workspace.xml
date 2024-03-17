@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc258ee5-11af-43ac-996b-93974ee0f47f" name="Changes" comment="Make simulation work">
+    <list default="true" id="bc258ee5-11af-43ac-996b-93974ee0f47f" name="Changes" comment="Add canvasPanel, controlPanel, dataCanvas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ising.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ising.java" afterDir="false" />
     </list>
@@ -12,6 +12,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -46,7 +53,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-11.0.21-corretto-11.0.21-4caba194b151-fab2e099" />
+        <option value="jdk-11.0.22-corretto-11.0.22-4caba194b151-bfa3237e" />
       </set>
     </attachedChunks>
   </component>
@@ -115,7 +122,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710698816718</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Add canvasPanel, controlPanel, dataCanvas">
+      <option name="closed" value="true" />
+      <created>1710714806078</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710714806078</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -126,6 +141,7 @@
     <MESSAGE value="Override update method to stop repainting background" />
     <MESSAGE value="Use meaningful row, col variable names instead i, j" />
     <MESSAGE value="Make simulation work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Make simulation work" />
+    <MESSAGE value="Add canvasPanel, controlPanel, dataCanvas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add canvasPanel, controlPanel, dataCanvas" />
   </component>
 </project>

@@ -26,8 +26,11 @@ public class Ising extends Canvas implements Runnable {
     controlPanel.setLayout(new GridLayout(0, 1));
     Canvas dataCanvas = new Canvas();
     dataCanvas.setSize(canvasSize, 105);
+    dataCanvas.setBackground(Color.white);
     controlPanel.add(dataCanvas);
-    isingFrame.add(dataCanvas, BorderLayout.SOUTH);
+    DoubleScroller tempScroller = new DoubleScroller("Temperature", 0.01, 10, 0.01, 3);
+    controlPanel.add(tempScroller);
+    isingFrame.add(controlPanel, BorderLayout.SOUTH);
     isingFrame.pack();
     isingFrame.setVisible(true);
     for (int row=0; row<latticeSize; row++) {
