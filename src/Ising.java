@@ -3,17 +3,18 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class Ising extends Canvas implements Runnable {
-  int latticeSize = 20;
+  int latticeSize = 100;
   int canvasSize = 400;
   int atomSize = canvasSize / latticeSize;
   int[][] atomStates = new int[latticeSize][latticeSize];
-  double T = 3;
+  double T = 10;
   Ising() {
     setSize(canvasSize, canvasSize);
     setBackground(Color.WHITE);
     Frame isingFrame = new Frame("Ising Model");
-    isingFrame.setLayout(new GridLayout(0, 1));
-    isingFrame.add(this,BorderLayout.CENTER);
+    Panel canvasPanel = new Panel();
+    canvasPanel.add(this);
+    isingFrame.add(canvasPanel,BorderLayout.CENTER);
     isingFrame.addWindowListener(new WindowAdapter() {
       @Override
       public void windowClosing(WindowEvent e) {
@@ -21,6 +22,12 @@ public class Ising extends Canvas implements Runnable {
         System.exit(0);
       }
     });
+    Panel controlPanel = new Panel();
+    controlPanel.setLayout(new GridLayout(0, 1));
+    Canvas dataCanvas = new Canvas();
+    dataCanvas.setSize(canvasSize, 105);
+    controlPanel.add(dataCanvas);
+    isingFrame.add(dataCanvas, BorderLayout.SOUTH);
     isingFrame.pack();
     isingFrame.setVisible(true);
     for (int row=0; row<latticeSize; row++) {
@@ -73,12 +80,12 @@ public class Ising extends Canvas implements Runnable {
   @Override
   public void run() {
     while (true) {
-      for (int n=0; n<100; n++) {
+      for (int n=0; n<2000; n++) {
         simulationStep();
       }
       this.repaint();
       try {
-        Thread.sleep(40);
+        Thread.sleep(20);
       } catch (InterruptedException e) {}
     }
   }
