@@ -6,6 +6,7 @@ public class Ising extends Canvas implements Runnable {
   int latticeSize = 20;
   int canvasSize = 400;
   int atomSize = canvasSize / latticeSize;
+  int[][] atomStates = new int[latticeSize][latticeSize];
   Ising() {
     setSize(canvasSize, canvasSize);
     setBackground(Color.WHITE);
@@ -21,6 +22,12 @@ public class Ising extends Canvas implements Runnable {
     });
     isingFrame.pack();
     isingFrame.setVisible(true);
+    for (int i=0; i<latticeSize; i++) {
+      for (int j=0; j<latticeSize; j++) {
+        if ((i + j) % 2==0) atomStates[i][j] = 1;
+          else atomStates[i][j] = -1;
+      }
+    }
   }
   public static void main(String[] args) {
     new Ising();
@@ -30,7 +37,7 @@ public class Ising extends Canvas implements Runnable {
     for (int i=0; i<latticeSize; i++) {
       for (int j=0; j<latticeSize; j++) {
         Color color = Color.blue;
-        if ((i + j) % 2==0) color = Color.yellow;
+        if (atomStates[i][j] == 1) color = Color.yellow;
         g.setColor(color);
         g.fill3DRect(atomSize * i, atomSize * j, atomSize, atomSize, false);
       }
