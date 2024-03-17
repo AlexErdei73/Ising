@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc258ee5-11af-43ac-996b-93974ee0f47f" name="Changes" comment="Introduce atomStates 2D array instance variable">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="bc258ee5-11af-43ac-996b-93974ee0f47f" name="Changes" comment="Override update method to stop repainting background">
       <change beforePath="$PROJECT_DIR$/src/Ising.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ising.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +90,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710683467295</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Override update method to stop repainting background">
+      <option name="closed" value="true" />
+      <created>1710684177242</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1710684177242</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -99,6 +106,7 @@
     <MESSAGE value="Add README.md" />
     <MESSAGE value="Introduce canvasSize, latticeSize and atomSize vars" />
     <MESSAGE value="Introduce atomStates 2D array instance variable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Introduce atomStates 2D array instance variable" />
+    <MESSAGE value="Override update method to stop repainting background" />
+    <option name="LAST_COMMIT_MESSAGE" value="Override update method to stop repainting background" />
   </component>
 </project>

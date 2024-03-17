@@ -22,10 +22,10 @@ public class Ising extends Canvas implements Runnable {
     });
     isingFrame.pack();
     isingFrame.setVisible(true);
-    for (int i=0; i<latticeSize; i++) {
-      for (int j=0; j<latticeSize; j++) {
-        if ((i + j) % 2==0) atomStates[i][j] = 1;
-          else atomStates[i][j] = -1;
+    for (int row=0; row<latticeSize; row++) {
+      for (int col=0; col<latticeSize; col++) {
+        if ((row + col) % 2==0) atomStates[row][col] = 1;
+          else atomStates[row][col] = -1;
       }
     }
   }
@@ -34,12 +34,12 @@ public class Ising extends Canvas implements Runnable {
   }
   @Override
   public void paint(Graphics g) {
-    for (int i=0; i<latticeSize; i++) {
-      for (int j=0; j<latticeSize; j++) {
+    for (int row=0; row<latticeSize; row++) {
+      for (int col=0; col<latticeSize; col++) {
         Color color = Color.blue;
-        if (atomStates[i][j] == 1) color = Color.yellow;
+        if (atomStates[row][col] == 1) color = Color.yellow;
         g.setColor(color);
-        g.fill3DRect(atomSize * i, atomSize * j, atomSize, atomSize, false);
+        g.fill3DRect(atomSize * row, atomSize * col, atomSize, atomSize, false);
       }
     }
   }
