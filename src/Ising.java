@@ -43,6 +43,11 @@ public class Ising extends Canvas implements Runnable {
       }
     }
   }
+  //Override update method to stop Ising to keep on repainting background
+  @Override
+  public void update(Graphics g) {
+    paint(g);
+  }
   @Override
   public void run() {
 
