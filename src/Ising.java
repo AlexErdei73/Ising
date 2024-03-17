@@ -7,7 +7,7 @@ public class Ising extends Canvas implements Runnable {
   int canvasSize = 400;
   int atomSize = canvasSize / latticeSize;
   int[][] atomStates = new int[latticeSize][latticeSize];
-  int count = 0;
+  double T = 3;
   Ising() {
     setSize(canvasSize, canvasSize);
     setBackground(Color.WHITE);
@@ -25,8 +25,7 @@ public class Ising extends Canvas implements Runnable {
     isingFrame.setVisible(true);
     for (int row=0; row<latticeSize; row++) {
       for (int col=0; col<latticeSize; col++) {
-        if ((row + col) % 2==0) atomStates[row][col] = 1;
-          else atomStates[row][col] = -1;
+        atomStates[row][col] = 1;
       }
     }
     Thread simulationThread = new Thread(this);
@@ -51,9 +50,25 @@ public class Ising extends Canvas implements Runnable {
   public void update(Graphics g) {
     paint(g);
   }
+  private double getEnergyDifference(int row, int col) {
+    int[] rowIncrements = {0,-1,0,1};
+    int[] colIncrements = {-1,0,1,0};
+    double result = 0;
+    int neighbourRow, neighbourCol, neighbour;
+    for (int neighbourIndex=0; neighbourIndex<4; neighbourIndex++) {
+      neighbourRow = row + rowIncrements[neighbourIndex];
+      neighbourCol = col + colIncrements[neighbourIndex];
+      if (neighbourRow < 0 || neighbourCol < 0 || neighbourRow == latticeSize || neighbourCol == latticeSize) neighbour = 0;
+        else neighbour = atomStates[neighbourRow][neighbourCol];
+      result += 2 * neighbour * atomStates[row][col];
+    }
+    return result;
+  }
   public void simulationStep() {
-    System.out.println(count);
-    count++;
+    int row = (int) Math.floor(Math.random() * latticeSize);
+    int col = (int) Math.floor(Math.random() * latticeSize);
+    double eChange = getEnergyDifference(row, col);
+    if ((eChange <= 0) || (Math.random() < Math.exp(-eChange/T))) atomStates[row][col] *= -1;
   }
   @Override
   public void run() {
@@ -61,6 +76,10 @@ public class Ising extends Canvas implements Runnable {
       for (int n=0; n<100; n++) {
         simulationStep();
       }
+      this.repaint();
+      try {
+        Thread.sleep(40);
+      } catch (InterruptedException e) {}
     }
   }
 }
