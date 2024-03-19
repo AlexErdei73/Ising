@@ -14,7 +14,7 @@ public class Ising extends Canvas implements Runnable {
     Frame isingFrame = new Frame("Ising Model");
     Panel canvasPanel = new Panel();
     canvasPanel.add(this);
-    isingFrame.add(canvasPanel,BorderLayout.CENTER);
+    isingFrame.add(canvasPanel,BorderLayout.NORTH);
     isingFrame.addWindowListener(new WindowAdapter() {
       @Override
       public void windowClosing(WindowEvent e) {
@@ -22,14 +22,21 @@ public class Ising extends Canvas implements Runnable {
         System.exit(0);
       }
     });
-    Panel controlPanel = new Panel();
-    controlPanel.setLayout(new GridLayout(0, 1));
+    Panel dataPanel = new Panel();
     Canvas dataCanvas = new Canvas();
     dataCanvas.setSize(canvasSize, 105);
     dataCanvas.setBackground(Color.white);
-    controlPanel.add(dataCanvas);
-    DoubleScroller tempScroller = new DoubleScroller("Temperature", 0.01, 10, 0.01, 3);
+    dataPanel.add(dataCanvas);
+    Panel controlPanel = new Panel();
+    controlPanel.setLayout(new GridLayout(0, 1));
+    DoubleScroller tempScroller = new DoubleScroller("Temperature: ", 0.01, 10, 0.01, 3);
     controlPanel.add(tempScroller);
+    Panel buttonsPanel = new Panel();
+    buttonsPanel.setLayout(new GridLayout(1, 0));
+    Button startBtn = new Button("Start");
+    buttonsPanel.add(startBtn);
+    controlPanel.add(buttonsPanel);
+    isingFrame.add(dataPanel, BorderLayout.CENTER);
     isingFrame.add(controlPanel, BorderLayout.SOUTH);
     isingFrame.pack();
     isingFrame.setVisible(true);
