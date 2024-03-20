@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
@@ -9,6 +11,7 @@ public class Ising extends Canvas implements Runnable {
   int[][] atomStates = new int[latticeSize][latticeSize];
   double T = 10;
   DoubleScroller tempScroller;
+  boolean isRunning = false;
   Ising() {
     setSize(canvasSize, canvasSize);
     setBackground(Color.WHITE);
@@ -35,6 +38,18 @@ public class Ising extends Canvas implements Runnable {
     Panel buttonsPanel = new Panel();
     buttonsPanel.setLayout(new GridLayout(1, 0));
     Button startBtn = new Button("Start");
+    startBtn.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent actionEvent) {
+        if (isRunning) {
+          isRunning = false;
+          startBtn.setLabel("Start");
+        } else {
+          isRunning = true;
+          startBtn.setLabel("Stop");
+        }
+      }
+    });
     buttonsPanel.add(startBtn);
     controlPanel.add(buttonsPanel);
     isingFrame.add(dataPanel, BorderLayout.CENTER);
@@ -91,8 +106,10 @@ public class Ising extends Canvas implements Runnable {
   @Override
   public void run() {
     while (true) {
-      for (int n=0; n<2000; n++) {
-        simulationStep();
+      if (isRunning) {
+        for (int n=0; n<2000; n++) {
+          simulationStep();
+        }
       }
       this.repaint();
       T = tempScroller.getValue();
