@@ -8,6 +8,7 @@ public class Ising extends Canvas implements Runnable {
   int atomSize = canvasSize / latticeSize;
   int[][] atomStates = new int[latticeSize][latticeSize];
   double T = 10;
+  DoubleScroller tempScroller;
   Ising() {
     setSize(canvasSize, canvasSize);
     setBackground(Color.WHITE);
@@ -29,7 +30,7 @@ public class Ising extends Canvas implements Runnable {
     dataPanel.add(dataCanvas);
     Panel controlPanel = new Panel();
     controlPanel.setLayout(new GridLayout(0, 1));
-    DoubleScroller tempScroller = new DoubleScroller("Temperature: ", 0.01, 10, 0.01, 3);
+    tempScroller = new DoubleScroller("Temperature: ", 0.01, 10, 0.01, 3);
     controlPanel.add(tempScroller);
     Panel buttonsPanel = new Panel();
     buttonsPanel.setLayout(new GridLayout(1, 0));
@@ -94,6 +95,7 @@ public class Ising extends Canvas implements Runnable {
         simulationStep();
       }
       this.repaint();
+      T = tempScroller.getValue();
       try {
         Thread.sleep(20);
       } catch (InterruptedException e) {}

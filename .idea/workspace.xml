@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc258ee5-11af-43ac-996b-93974ee0f47f" name="Changes" comment="Add canvasPanel, controlPanel, dataCanvas">
+    <list default="true" id="bc258ee5-11af-43ac-996b-93974ee0f47f" name="Changes" comment="Add UI controls">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ising.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ising.java" afterDir="false" />
     </list>
@@ -130,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710714806078</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Add UI controls">
+      <option name="closed" value="true" />
+      <created>1710891305787</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710891305787</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -142,6 +150,7 @@
     <MESSAGE value="Use meaningful row, col variable names instead i, j" />
     <MESSAGE value="Make simulation work" />
     <MESSAGE value="Add canvasPanel, controlPanel, dataCanvas" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add canvasPanel, controlPanel, dataCanvas" />
+    <MESSAGE value="Add UI controls" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add UI controls" />
   </component>
 </project>
