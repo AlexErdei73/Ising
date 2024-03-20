@@ -12,6 +12,22 @@ public class Ising extends Canvas implements Runnable {
   double T = 10;
   DoubleScroller tempScroller;
   boolean isRunning = false;
+  private double energy = 0;
+  private synchronized void calcEnergy() {
+    energy = 0;
+    for (int row=0; row < latticeSize; row++) {
+      for (int col=0; col < latticeSize; col++) {
+        energy += -0.5 * getEnergyDifference(row, col);
+      }
+    }
+    energy *= 0.5;
+  }
+
+  private synchronized double getEnergy() {
+    return energy;
+  }
+
+  private Canvas dataCanvas;
   Ising() {
     setSize(canvasSize, canvasSize);
     setBackground(Color.WHITE);
@@ -27,7 +43,12 @@ public class Ising extends Canvas implements Runnable {
       }
     });
     Panel dataPanel = new Panel();
-    Canvas dataCanvas = new Canvas();
+    dataCanvas = new Canvas() {
+      @Override
+      public void paint(Graphics g) {
+        g.drawString("E = " + getEnergy(), 0, 15);
+      }
+    };
     dataCanvas.setSize(canvasSize, 105);
     dataCanvas.setBackground(Color.white);
     dataPanel.add(dataCanvas);
@@ -113,6 +134,8 @@ public class Ising extends Canvas implements Runnable {
       }
       this.repaint();
       T = tempScroller.getValue();
+      calcEnergy();
+      dataCanvas.repaint();
       try {
         Thread.sleep(20);
       } catch (InterruptedException e) {}
