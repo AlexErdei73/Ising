@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc258ee5-11af-43ac-996b-93974ee0f47f" name="Changes" comment="Make startBtn work">
+    <list default="true" id="bc258ee5-11af-43ac-996b-93974ee0f47f" name="Changes" comment="Paint energy on dataCanvas">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ising.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ising.java" afterDir="false" />
     </list>
@@ -160,7 +160,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710895548002</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Paint energy on dataCanvas">
+      <option name="closed" value="true" />
+      <created>1710958773136</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1710958773136</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -185,6 +193,7 @@
     <MESSAGE value="Add canvasPanel, controlPanel, dataCanvas" />
     <MESSAGE value="Add UI controls" />
     <MESSAGE value="Make tempScroller work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Make tempScroller work" />
+    <MESSAGE value="Paint energy on dataCanvas" />
+    <option name="LAST_COMMIT_MESSAGE" value="Paint energy on dataCanvas" />
   </component>
 </project>

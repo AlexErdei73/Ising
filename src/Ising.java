@@ -9,15 +9,18 @@ public class Ising extends Canvas implements Runnable {
   int canvasSize = 400;
   int atomSize = canvasSize / latticeSize;
   int[][] atomStates = new int[latticeSize][latticeSize];
-  double T = 10;
+  double T = 3;
   DoubleScroller tempScroller;
   boolean isRunning = false;
   private double energy = 0;
-  private synchronized void calcEnergy() {
+  private double magnetization = 0;
+  private synchronized void calcData() {
     energy = 0;
+    magnetization = 0;
     for (int row=0; row < latticeSize; row++) {
       for (int col=0; col < latticeSize; col++) {
         energy += -0.5 * getEnergyDifference(row, col);
+        magnetization += atomStates[row][col];
       }
     }
     energy *= 0.5;
@@ -25,6 +28,10 @@ public class Ising extends Canvas implements Runnable {
 
   private synchronized double getEnergy() {
     return energy;
+  }
+
+  private synchronized double getMagnetization() {
+    return magnetization;
   }
 
   private Canvas dataCanvas;
@@ -47,6 +54,7 @@ public class Ising extends Canvas implements Runnable {
       @Override
       public void paint(Graphics g) {
         g.drawString("E = " + getEnergy(), 0, 15);
+        g.drawString("M = " + getMagnetization(), 0, 30);
       }
     };
     dataCanvas.setSize(canvasSize, 105);
@@ -134,7 +142,7 @@ public class Ising extends Canvas implements Runnable {
       }
       this.repaint();
       T = tempScroller.getValue();
-      calcEnergy();
+      calcData();
       dataCanvas.repaint();
       try {
         Thread.sleep(20);
