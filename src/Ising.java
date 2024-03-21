@@ -14,6 +14,9 @@ public class Ising extends Canvas implements Runnable {
   boolean isRunning = false;
   private double energy = 0;
   private double magnetization = 0;
+  private double sumE = 0;
+  private double sumM = 0;
+  private double count = 0;
   private synchronized void calcData() {
     energy = 0;
     magnetization = 0;
@@ -24,6 +27,9 @@ public class Ising extends Canvas implements Runnable {
       }
     }
     energy *= 0.5;
+    sumE += energy;
+    sumM += magnetization;
+    count++;
   }
 
   private synchronized double getEnergy() {
@@ -32,6 +38,20 @@ public class Ising extends Canvas implements Runnable {
 
   private synchronized double getMagnetization() {
     return magnetization;
+  }
+
+  private synchronized void resetAverages() {
+    sumE = 0;
+    sumM = 0;
+    count = 0;
+  }
+
+  private synchronized double getAvgE() {
+    return sumE / count;
+  }
+
+  private synchronized double getAvgM() {
+    return sumM / count;
   }
 
   private Canvas dataCanvas;
@@ -55,6 +75,8 @@ public class Ising extends Canvas implements Runnable {
       public void paint(Graphics g) {
         g.drawString("E = " + getEnergy(), 0, 15);
         g.drawString("M = " + getMagnetization(), 0, 30);
+        g.drawString("Avg E =" + getAvgE(), 0, 45);
+        g.drawString("Avg M = " + getAvgM(), 0, 60);
       }
     };
     dataCanvas.setSize(canvasSize, 105);
@@ -134,6 +156,7 @@ public class Ising extends Canvas implements Runnable {
   }
   @Override
   public void run() {
+    resetAverages();
     while (true) {
       if (isRunning) {
         for (int n=0; n<2000; n++) {
@@ -142,8 +165,10 @@ public class Ising extends Canvas implements Runnable {
       }
       this.repaint();
       T = tempScroller.getValue();
-      calcData();
-      dataCanvas.repaint();
+      if (isRunning) {
+        calcData();
+        dataCanvas.repaint();
+      }
       try {
         Thread.sleep(20);
       } catch (InterruptedException e) {}
