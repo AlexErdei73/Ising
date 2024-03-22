@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class Ising extends Canvas implements Runnable {
   int latticeSize = 100;
@@ -55,6 +57,7 @@ public class Ising extends Canvas implements Runnable {
   }
 
   private Canvas dataCanvas;
+  private DecimalFormat twoDecimal = new DecimalFormat("0.00");
   Ising() {
     setSize(canvasSize, canvasSize);
     setBackground(Color.WHITE);
@@ -75,8 +78,8 @@ public class Ising extends Canvas implements Runnable {
       public void paint(Graphics g) {
         g.drawString("E = " + getEnergy(), 0, 15);
         g.drawString("M = " + getMagnetization(), 0, 30);
-        g.drawString("Avg E =" + getAvgE(), 0, 45);
-        g.drawString("Avg M = " + getAvgM(), 0, 60);
+        g.drawString("Avg E =" + twoDecimal.format(getAvgE()), 0, 45);
+        g.drawString("Avg M = " + twoDecimal.format(getAvgM()), 0, 60);
       }
     };
     dataCanvas.setSize(canvasSize, 105);
