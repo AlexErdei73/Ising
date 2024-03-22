@@ -101,7 +101,15 @@ public class Ising extends Canvas implements Runnable {
         }
       }
     });
+    Button resetBtn = new Button("Reset");
+    resetBtn.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent actionEvent) {
+        resetAverages();
+      }
+    });
     buttonsPanel.add(startBtn);
+    buttonsPanel.add(resetBtn);
     controlPanel.add(buttonsPanel);
     isingFrame.add(dataPanel, BorderLayout.CENTER);
     isingFrame.add(controlPanel, BorderLayout.SOUTH);
