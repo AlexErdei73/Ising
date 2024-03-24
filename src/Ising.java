@@ -7,7 +7,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 public class Ising extends Canvas implements Runnable {
-    int latticeSize = 100;
+    int latticeSize = 200;
     int canvasSize = 400;
     int atomSize = canvasSize / latticeSize;
     int[][] atomStates = new int[latticeSize][latticeSize];
@@ -19,6 +19,7 @@ public class Ising extends Canvas implements Runnable {
     private double sumE = 0;
     private double sumM = 0;
     private double count = 0;
+    private Image offScreenImage;
 
     private synchronized void calcData() {
         energy = 0;
@@ -136,6 +137,8 @@ public class Ising extends Canvas implements Runnable {
                 atomStates[row][col] = 1;
             }
         }
+        offScreenImage = createImage(canvasSize, canvasSize);
+        initialPaint();
         Thread simulationThread = new Thread(this);
         simulationThread.start();
     }
@@ -145,15 +148,8 @@ public class Ising extends Canvas implements Runnable {
     }
 
     @Override
-    public void paint(Graphics g) {
-        for (int row = 0; row < latticeSize; row++) {
-            for (int col = 0; col < latticeSize; col++) {
-                Color color = Color.blue;
-                if (atomStates[row][col] == 1) color = Color.yellow;
-                g.setColor(color);
-                g.fill3DRect(atomSize * row, atomSize * col, atomSize, atomSize, false);
-            }
-        }
+    public synchronized void paint(Graphics g) {
+        g.drawImage(offScreenImage,0,0,canvasSize,canvasSize,this);
     }
 
     //Override update method to stop Ising to keep on repainting background
@@ -178,11 +174,36 @@ public class Ising extends Canvas implements Runnable {
         return result;
     }
 
+    private synchronized void paintRectangle(int row, int col) {
+        Graphics offScreenGraphics = offScreenImage.getGraphics();
+        if (atomStates[row][col] == 1) {
+            offScreenGraphics.setColor(Color.yellow);
+        } else {
+            offScreenGraphics.setColor(Color.blue);
+        };
+        offScreenGraphics.fillRect(atomSize * row, atomSize * col, atomSize, atomSize);
+    }
+
+    private void initialPaint() {
+        Graphics offScreenGraphics = offScreenImage.getGraphics();
+        for (int row = 0; row < latticeSize; row++) {
+            for (int col = 0; col < latticeSize; col++) {
+                if (atomStates[row][col] == 1) offScreenGraphics.setColor(Color.yellow);
+                else offScreenGraphics.setColor(Color.blue);
+                offScreenGraphics.fillRect(atomSize * row, atomSize * col, atomSize, atomSize);
+            }
+        }
+        this.repaint();
+    }
+
     public void simulationStep() {
         int row = (int) Math.floor(Math.random() * latticeSize);
         int col = (int) Math.floor(Math.random() * latticeSize);
         double eChange = getEnergyDifference(row, col);
-        if ((eChange <= 0) || (Math.random() < Math.exp(-eChange / T))) atomStates[row][col] *= -1;
+        if ((eChange <= 0) || (Math.random() < Math.exp(-eChange / T))) {
+            atomStates[row][col] *= -1;
+            paintRectangle(row, col);
+        }
     }
 
     @Override

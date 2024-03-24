@@ -7,7 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc258ee5-11af-43ac-996b-93974ee0f47f" name="Changes" comment="Add twoDecimal DecimalFormat to format output">
+    <list default="true" id="bc258ee5-11af-43ac-996b-93974ee0f47f" name="Changes" comment="Add recordBtn to record data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ising.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ising.java" afterDir="false" />
     </list>
@@ -55,17 +55,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Ising.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/alex73/IdeaProjects/Physics/DanialVShroederBook/Ising",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Ising.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/alex73/IdeaProjects/Physics/DanialVShroederBook/Ising&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -207,7 +207,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711140878261</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Add recordBtn to record data">
+      <option name="closed" value="true" />
+      <created>1711143146348</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1711143146349</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -237,6 +245,7 @@
     <MESSAGE value="Paint averages on dataCanvas" />
     <MESSAGE value="Add resetBtn to reset averages" />
     <MESSAGE value="Add twoDecimal DecimalFormat to format output" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add twoDecimal DecimalFormat to format output" />
+    <MESSAGE value="Add recordBtn to record data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add recordBtn to record data" />
   </component>
 </project>
