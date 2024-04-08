@@ -4,10 +4,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
 
 public class Ising extends Canvas implements Runnable {
-    int latticeSize = 200;
+    int latticeSize = 100;
     int canvasSize = 400;
     int atomSize = canvasSize / latticeSize;
     int[][] atomStates = new int[latticeSize][latticeSize];
@@ -79,10 +78,11 @@ public class Ising extends Canvas implements Runnable {
         dataCanvas = new Canvas() {
             @Override
             public void paint(Graphics g) {
-                g.drawString("E = " + getEnergy(), 0, 15);
-                g.drawString("M = " + getMagnetization(), 0, 30);
-                g.drawString("Avg E =" + twoDecimal.format(getAvgE()), 0, 45);
-                g.drawString("Avg M = " + twoDecimal.format(getAvgM()), 0, 60);
+                g.drawString("T = " + T,0, 15);
+                g.drawString("E = " + getEnergy(), 0, 30);
+                g.drawString("M = " + getMagnetization(), 0, 45);
+                g.drawString("Avg E =" + twoDecimal.format(getAvgE()), 0, 60);
+                g.drawString("Avg M = " + twoDecimal.format(getAvgM()), 0, 75);
             }
         };
         dataCanvas.setSize(canvasSize, 105);
@@ -118,6 +118,7 @@ public class Ising extends Canvas implements Runnable {
         recordBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                System.out.println("T = " + T);
                 System.out.println("E = " + energy);
                 System.out.println("M = " + magnetization);
                 System.out.println("Avg E = " + twoDecimal.format(getAvgE()));
@@ -180,7 +181,7 @@ public class Ising extends Canvas implements Runnable {
             offScreenGraphics.setColor(Color.yellow);
         } else {
             offScreenGraphics.setColor(Color.blue);
-        };
+        }
         offScreenGraphics.fillRect(atomSize * row, atomSize * col, atomSize, atomSize);
     }
 
@@ -211,7 +212,7 @@ public class Ising extends Canvas implements Runnable {
         resetAverages();
         while (true) {
             if (isRunning) {
-                for (int n = 0; n < 2000; n++) {
+                for (int n = 0; n < 10000; n++) {
                     simulationStep();
                 }
             }
@@ -222,7 +223,7 @@ public class Ising extends Canvas implements Runnable {
                 dataCanvas.repaint();
             }
             try {
-                Thread.sleep(20);
+                Thread.sleep(5);
             } catch (InterruptedException e) {
             }
         }

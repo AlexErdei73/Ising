@@ -7,7 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bc258ee5-11af-43ac-996b-93974ee0f47f" name="Changes" comment="Add recordBtn to record data">
+    <list default="true" id="bc258ee5-11af-43ac-996b-93974ee0f47f" name="Changes" comment="Add double buffering graphics">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Ising.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ising.java" afterDir="false" />
     </list>
@@ -32,14 +32,12 @@
     &quot;assignee&quot;: &quot;AlexErdei73&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="f7a3399e-83fb-4bcb-978e-2472e146b90b" />
-        <option name="url" value="git@github.com:AlexErdei73/Ising.git" />
-      </UrlAndAccount>
-    </option>
-  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:AlexErdei73/Ising.git",
+    "accountId": "f7a3399e-83fb-4bcb-978e-2472e146b90b"
+  }
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -70,13 +68,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="jdk-11.0.21-corretto-11.0.21-4caba194b151-fab2e099" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -215,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711143146349</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Add double buffering graphics">
+      <option name="closed" value="true" />
+      <created>1711240673836</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1711240673836</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -246,6 +245,7 @@
     <MESSAGE value="Add resetBtn to reset averages" />
     <MESSAGE value="Add twoDecimal DecimalFormat to format output" />
     <MESSAGE value="Add recordBtn to record data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add recordBtn to record data" />
+    <MESSAGE value="Add double buffering graphics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add double buffering graphics" />
   </component>
 </project>
